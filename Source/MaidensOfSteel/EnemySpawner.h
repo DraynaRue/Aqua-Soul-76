@@ -26,7 +26,10 @@ protected:
 	float SpawnRate;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AEnemyCharacter> EnemyType;
+	TSubclassOf<class APresentPawn> PresentType;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<class APresentPawn> BadType;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	AActor* SpawnPoint;
