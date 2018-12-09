@@ -8,10 +8,12 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Engine/CollisionProfile.h"
+#include "Engine/World.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
 #include "TriggerComponent.h"
+#include "PlayerInstance.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -35,7 +37,14 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (doTimerStart == true)
+	{
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle_GameTimer, this, &APlayerCharacter::GameTimerExpired, 120.0f);
+	}
+}
+
+void APlayerCharacter::GameTimerExpired()
+{
 }
 
 // Called every frame
@@ -43,6 +52,8 @@ void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	UPlayerInstance* pInst = Cast<UPlayerInstance>(GetGameInstance());
+	pInst->currentTime = GetWorld()->GetTimerManager().GetTimerRemaining(TimerHandle_GameTimer);
 }
 
 // Called to bind functionality to input

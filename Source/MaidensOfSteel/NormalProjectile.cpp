@@ -43,6 +43,5 @@ void ANormalProjectile::OnHit(UPrimitiveComponent * HitComp, AActor * OtherActor
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
 	}
-
 	Destroy();
 }
