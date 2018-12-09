@@ -2,7 +2,7 @@
 
 #include "EnemySpawner.h"
 #include "Engine/World.h"
-#include "EnemyCharacter.h"
+#include "PresentPawn.h"
 
 // Sets default values
 AEnemySpawner::AEnemySpawner()
@@ -35,7 +35,7 @@ void AEnemySpawner::Tick(float DeltaTime)
 		params.Instigator = Cast<APawn>(GetOwner());
 
 
-		AEnemyCharacter* spawnedactor = World->SpawnActor<AEnemyCharacter>(EnemyType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
+		APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(PresentType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
 		if (spawnedactor != nullptr)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));

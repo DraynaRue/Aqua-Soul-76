@@ -1,7 +1,7 @@
 
 
 #include "PresentPawn.h"
-
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 APresentPawn::APresentPawn()
@@ -9,13 +9,15 @@ APresentPawn::APresentPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	RootComponent = Mesh;
 }
 
 // Called when the game starts or when spawned
 void APresentPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -23,6 +25,8 @@ void APresentPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FVector EnemyMov = FVector(0, -1, 0);
+	SetActorLocation(GetActorLocation() + EnemyMov);
 }
 
 // Called to bind functionality to input
@@ -31,4 +35,3 @@ void APresentPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
-
