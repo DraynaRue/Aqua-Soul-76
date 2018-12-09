@@ -34,13 +34,26 @@ void AEnemySpawner::Tick(float DeltaTime)
 		params.Owner = GetOwner();
 		params.Instigator = Cast<APawn>(GetOwner());
 
-
-		APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(PresentType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
-		if (spawnedactor != nullptr)
+		float BadPresSpawnChance = FMath::RandRange(0, 10);
+		if (BadPresSpawnChance == 10)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
+			// Spawn Bad Present
+			APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(BadType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
+			if (spawnedactor != nullptr)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
+			}
 		}
-
+		else if (BadPresSpawnChance < 10)
+		{
+			// Spawn Good Present
+			APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(PresentType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
+			if (spawnedactor != nullptr)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
+			}
+		}
+		
 		bCanSpawn = false;
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle_SpawnTimerExpired, this, &AEnemySpawner::SpawnTimerExpired, SpawnRate);
 	}

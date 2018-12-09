@@ -39,12 +39,13 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 	if (doTimerStart == true)
 	{
-		GetWorld()->GetTimerManager().SetTimer(TimerHandle_GameTimer, this, &APlayerCharacter::GameTimerExpired, 120.0f);
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle_GameTimer, this, &APlayerCharacter::GameTimerExpired, TimerStart);
 	}
 }
 
 void APlayerCharacter::GameTimerExpired()
 {
+	UGameplayStatics::OpenLevel(GetWorld(), "GameOverMap");
 }
 
 // Called every frame
