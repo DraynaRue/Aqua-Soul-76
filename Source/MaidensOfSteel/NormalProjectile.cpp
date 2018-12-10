@@ -2,7 +2,7 @@
 
 #include "NormalProjectile.h"
 #include "PlayerCharacter.h"
-#include "EnemyCharacter.h"
+#include "PresentPawn.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
@@ -42,6 +42,10 @@ void ANormalProjectile::OnHit(UPrimitiveComponent * HitComp, AActor * OtherActor
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+	}
+	if (OtherActor->ActorHasTag("Present") || OtherActor->ActorHasTag("Bad Present"))
+	{
+		Cast<APresentPawn>(OtherActor)->MeshComponent->SetMaterial(0, PaperMaterial);
 	}
 	Destroy();
 }

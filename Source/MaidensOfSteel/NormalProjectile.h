@@ -30,7 +30,7 @@ public:
 	float DamageValue;
 
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
-	UMaterialInstance* Material;
+	UMaterialInstance* PaperMaterial;
 
 	/** Function to handle the projectile hitting something */
 	UFUNCTION()
