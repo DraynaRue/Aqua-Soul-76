@@ -37,10 +37,10 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	if (doTimerStart == true)
-	{
+	//if (doTimerStart == true)
+	//{
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle_GameTimer, this, &APlayerCharacter::GameTimerExpired, TimerStart);
-	}
+	//}
 }
 
 void APlayerCharacter::GameTimerExpired()
