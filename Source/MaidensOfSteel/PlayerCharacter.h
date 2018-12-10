@@ -38,6 +38,7 @@ public:
 	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
 	bool doTimerStart;
 
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	FTimerHandle TimerHandle_GameTimer;
 
 	FVector DesiredVelocity;
