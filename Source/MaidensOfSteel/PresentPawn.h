@@ -11,13 +11,14 @@ class MAIDENSOFSTEEL_API APresentPawn : public APawn
 {
 	GENERATED_BODY()
 
-	UPROPERTY(Category = Mesh, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UStaticMeshComponent* Mesh;
+	
 
 public:
 	// Sets default values for this pawn's properties
 	APresentPawn();
 	
+	UPROPERTY(Category = MeshComponent, VisibleAnywhere, BlueprintReadOnly)
+	class UStaticMeshComponent* MeshComponent;
 
 protected:
 	// Called when the game starts or when spawned
