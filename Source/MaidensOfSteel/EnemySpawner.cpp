@@ -35,22 +35,22 @@ void AEnemySpawner::Tick(float DeltaTime)
 		params.Instigator = Cast<APawn>(GetOwner());
 
 		float BadPresSpawnChance = FMath::RandRange(0, 10);
-		if (BadPresSpawnChance >=6)
+		if (BadPresSpawnChance >=7)
 		{
 			// Spawn Bad Present
 			APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(BadType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
 			if (spawnedactor != nullptr)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
+			//	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
 			}
 		}
-		else if (BadPresSpawnChance < 6)
+		else if (BadPresSpawnChance < 7)
 		{
 			// Spawn Good Present
 			APresentPawn* spawnedactor = World->SpawnActor<APresentPawn>(PresentType, SpawnPoint->GetActorLocation(), SpawnPoint->GetActorRotation(), params);
 			if (spawnedactor != nullptr)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
+			//	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Yellow, TEXT("Spawn!!"));
 			}
 		}
 		
