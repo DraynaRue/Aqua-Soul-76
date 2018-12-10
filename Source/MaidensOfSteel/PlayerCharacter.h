@@ -25,11 +25,21 @@ public:
 
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	float TimerStart;
+
+	/* How fast the weapon will fire */
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float FireRate;
 
 	/* The speed our ship moves around the level */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float MoveSpeed;
+
+	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
+	bool doTimerStart;
+
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
+	FTimerHandle TimerHandle_GameTimer;
 
 	FVector DesiredVelocity;
 
@@ -55,7 +65,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	class ASwitchController* PlayerCon;
+	void GameTimerExpired();
 
 	/* Flag to control firing  */
 	uint32 bCanFire : 1;
