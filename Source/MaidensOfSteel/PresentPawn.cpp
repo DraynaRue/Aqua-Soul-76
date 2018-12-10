@@ -25,7 +25,7 @@ void APresentPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector EnemyMov = FVector(0, -1, 0);
+	FVector EnemyMov = FVector(0, -2, 0);
 	SetActorLocation(GetActorLocation() + EnemyMov);
 }
 
