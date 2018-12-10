@@ -36,9 +36,8 @@ public:
 	float MoveSpeed;
 
 	UPROPERTY(Category = Gameplay, VisibleAnywhere, BlueprintReadWrite)
-	bool doTimerStart;
+	bool doTimerStart = false;
 
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	FTimerHandle TimerHandle_GameTimer;
 
 	FVector DesiredVelocity;
